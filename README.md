@@ -1,73 +1,87 @@
-# Next.js Monorepo Starter
+# Independent Electronic Music Label Platform
 
-A modern monorepo template powered by **Turborepo**, **Next.js**, **shadcn/ui**, **Biome**, and **Knip**.
+A high-performance, aesthetically immersive web platform for an independent electronic music label. Features a "Void & Laser" design language, a public-facing site for releases and artists, and a private dashboard for artist management.
 
-## What's Inside
+## 🚀 Features
 
-### Apps
+### Public Site
 
-- `apps/web` - Next.js 16 application with App Router and Turbopack
+- **Immersive Design**: "Void & Laser" aesthetic with deep dark backgrounds and acid lime accents.
+- **Discography**: Grid-based layout showcasing releases with high-quality artwork.
+- **Artist Roster**: Dedicated profiles for label artists.
+- **Events Calendar**: Listings for upcoming tours and shows.
+- **Responsive Layout**: Fully responsive experience across all devices.
 
-### Packages
+### Artist Dashboard
 
-- `packages/ui` - Shared React component library with shadcn/ui
-- `packages/typescript-config` - Shared TypeScript configurations
+- **Overview**: Real-time statistics on streams, revenue, and audience engagement.
+- **Release Management**: Tools for artists to view and manage their discography.
+- **Financial Reports**: Transparent breakdown of earnings and recent transactions.
+- **Settings**: Comprehensive profile and account management.
 
-### Tools
+## 🛠 Tech Stack
 
-- [Turborepo](https://turbo.build/repo) - High-performance build system
-- [Biome](https://biomejs.dev) - Fast formatter and linter
-- [Knip](https://knip.dev) - Find unused files, dependencies and exports
-- [pnpm](https://pnpm.io) - Fast, disk space efficient package manager
+- **Framework**: [Next.js 16](https://nextjs.org) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com) with custom "Void" theme
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com) (custom implementations in `@workspace/ui`)
+- **Icons**: [Lucide React](https://lucide.dev)
+- **Monorepo**: [Turborepo](https://turbo.build)
+- **Package Manager**: [pnpm](https://pnpm.io)
 
-## Getting Started
-
-```bash
-# Install dependencies
-pnpm install
-
-# Start development server
-pnpm dev
-
-# Build all apps and packages
-pnpm build
-
-# Lint and format code
-pnpm check
-
-# Find unused code
-pnpm knip
-```
-
-## Adding UI Components
-
-To add shadcn/ui components, run at the project root:
+## 📦 Project Structure
 
 ```bash
-pnpm dlx shadcn@latest add button -c apps/web
-```
-
-Components will be placed in `packages/ui/src/components`.
-
-## Using Components
-
-Import components from the `@workspace/ui` package:
-
-```tsx
-import { Button } from "@workspace/ui/components/button"
-```
-
-## Project Structure
-
-```
 .
 ├── apps/
-│   └── web/                 # Next.js application
+│   └── web/                 # Main Next.js application
+│       ├── app/             # App Router pages (Public & Dashboard)
+│       └── components/      # Web-specific components (Hero, SiteHeader, etc.)
 ├── packages/
-│   ├── ui/                  # Shared UI components
+│   ├── ui/                  # Shared UI component library
+│   │   ├── components/      # Reusable atoms (Button, Card, Input, etc.)
+│   │   └── styles/          # Global styles and theme definitions
 │   └── typescript-config/   # Shared TS configs
-├── biome.json               # Biome configuration
-├── knip.json                # Knip configuration
-├── turbo.json               # Turborepo configuration
-└── pnpm-workspace.yaml      # pnpm workspace config
 ```
+
+## 🏁 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm
+
+### Installation
+
+1. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+2. Start the development server:
+
+   ```bash
+   pnpm dev
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build
+
+To build the application for production:
+
+```bash
+pnpm build
+```
+
+## 🎨 Design System
+
+The application uses a custom design system defined in `packages/ui/src/styles/globals.css`.
+
+- **Primary Color**: Acid Lime (`#ccff00`)
+- **Background**: Zinc 950 / Black
+- **Typography**: `Geist` Sans and `Geist` Mono for a technical, industrial look.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please ensure you follow the existing code style and run linting checks before submitting a PR.

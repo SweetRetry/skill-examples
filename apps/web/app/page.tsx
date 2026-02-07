@@ -1,71 +1,60 @@
-import { Button } from "@workspace/ui/components/button"
+import { HeroSection } from "@/components/hero-section";
+import { ReleaseCard } from "@/components/release-card";
 
 export default function Page() {
+  const recentReleases = [
+    {
+      id: "rel_001",
+      title: "Neon Genesis",
+      artist: "Cyber Void",
+      year: "2024",
+      type: "EP" as const,
+      coverUrl:
+        "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2070&auto=format&fit=crop",
+    },
+    {
+      id: "rel_002",
+      title: "Acid Rain",
+      artist: "Techno Mancer",
+      year: "2024",
+      type: "Single" as const,
+      coverUrl:
+        "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2894&auto=format&fit=crop",
+    },
+    {
+      id: "rel_003",
+      title: "Deep State",
+      artist: "Sub Level",
+      year: "2023",
+      type: "Album" as const,
+      coverUrl:
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2864&auto=format&fit=crop",
+    },
+  ];
+
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center bg-gradient-to-b from-zinc-50 to-zinc-100 dark:from-zinc-950 dark:to-zinc-900">
-      <main className="flex flex-col items-center gap-8 px-4 text-center">
-        <div className="space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Next.js Monorepo Starter
-          </h1>
-          <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
-            Build fast with Turborepo, Next.js, shadcn/ui, Biome, and Knip.
-          </p>
+    <div className="flex min-h-screen flex-col">
+      <HeroSection />
+
+      <section className="container mx-auto py-20 px-4">
+        <div className="mb-12 flex items-center justify-between border-b border-white/10 pb-4">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            LATEST RELEASES
+          </h2>
+          <a
+            href="/releases"
+            className="text-sm font-medium text-primary hover:underline"
+          >
+            VIEW ALL
+          </a>
         </div>
 
-        <div className="flex gap-4">
-          <Button asChild>
-            <a
-              href="https://turbo.build/repo/docs"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Turborepo Docs
-            </a>
-          </Button>
-          <Button variant="outline" asChild>
-            <a
-              href="https://ui.shadcn.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              shadcn/ui
-            </a>
-          </Button>
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {recentReleases.map((release) => (
+            <ReleaseCard key={release.id} {...release} />
+          ))}
         </div>
-
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <FeatureCard
-            title="Turborepo"
-            description="High-performance build system for JavaScript and TypeScript codebases."
-          />
-          <FeatureCard
-            title="Biome"
-            description="Fast formatter and linter, replacing ESLint and Prettier."
-          />
-          <FeatureCard
-            title="Knip"
-            description="Find unused files, dependencies and exports in your project."
-          />
-        </div>
-      </main>
+      </section>
     </div>
-  )
-}
-
-function FeatureCard({
-  title,
-  description,
-}: {
-  title: string
-  description: string
-}) {
-  return (
-    <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-      <h3 className="font-semibold">{title}</h3>
-      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        {description}
-      </p>
-    </div>
-  )
+  );
 }
